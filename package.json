@@ -1,0 +1,24 @@
+{
+  "name": "prime-ex-fe-002",
+  "version": "1.0.0",
+  "description": "After this ex you will be get - Detect event  - Working with DOM in javascript",
+  "main": "script.js",
+  "dependencies": {
+    "serve": "^11.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoanguyen1203/prime-ex-fe-002.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hoanguyen1203/prime-ex-fe-002/issues"
+  },
+  "homepage": "https://github.com/hoanguyen1203/prime-ex-fe-002#readme"
+}
