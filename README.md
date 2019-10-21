@@ -35,7 +35,7 @@ Open folder package.json add under line "test":
 
 ## Preview how it work
 
-![Typing speed tester!](https://github.com/hoanguyen1203/prime-ex-fe-002/blob/master/typing-speed-tester.gif))
+![Typing speed tester!](https://github.com/hoanguyen1203/prime-ex-fe-002/blob/master/typing-speed-tester.gif)
 
 
 # License
