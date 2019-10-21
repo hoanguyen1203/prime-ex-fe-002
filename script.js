@@ -15,36 +15,67 @@ function addLeadingZero(number) {
     return string
 }
 
-// Run a standard minute/second/hundredths timer:
-var hundredths = 0
-var second = 0
-var minute = 0
+// Create Timer Object
+function Timer(minute, second, hundredths) {
+    this.minute = minute
+    this.second = second
+    this.hundredths = hundredths
 
-function start() {
-    if(hundredths === 99) {
-        second++
-        hundredths = 0
-        if(second === 59) {
-            minute++
-            second = 0
-        }
+    this.showTime = function() {
+        theTimer.innerHTML = addLeadingZero(this.minute) + ":" + addLeadingZero(this.second) + ":" + addLeadingZero(this.hundredths)
     }
-    hundredths++
-    theTimer.innerHTML = addLeadingZero(minute) + ":" + addLeadingZero(second) + ":" + addLeadingZero(hundredths)
 }
 
+// Create Border Object
+function Border(width, style, color) {
+    this.width = width
+    this.style = style
+    this.color = color
+
+    this.showBorder = function() {
+        testWrapper.style.border = this.width + " " + this.style + " " + this.color
+    }
+}
+
+// Create zeroTime Object
+var zeroTime = {
+    minute: 0,
+    second: 0,
+    hundredths: 0
+}
+
+function start() {
+    if(zeroTime.hundredths === 99) {
+        zeroTime.second++
+        zeroTime.hundredths = 0
+    }
+    if(zeroTime.second === 59) {
+        zeroTime.minute++
+        zeroTime.second = 0
+    }
+    zeroTime.hundredths++
+    
+    var timer = new Timer(zeroTime.minute, zeroTime.second, zeroTime.hundredths)
+    timer.showTime()
+}
+
+// Run a standard minute/second/hundredths timer:
 var startTime = null
+var greenBorder = new Border('10px', 'solid', 'green')
+var redBorder = new Border('10px', 'solid', 'red')
+var greyBorder = new Border('10px', 'solid', 'grey')
+
 testArea.oninput = function() {
     if(!startTime){
         startTime= setInterval(start, 10)
     }
     if (checkText(testArea.value)) {
-        testWrapper.style.border = "10px solid green"
+        greenBorder.showBorder()
         clearInterval(startTime)
     } else {
-        testWrapper.style.border = "10px solid red"
+        redBorder.showBorder()
     }
-};
+}
 
 // Match the text entered with the provided text on the page:
 function checkText(text) {
@@ -54,21 +85,19 @@ function checkText(text) {
     return false
 }
 
-// Start the timer:
-
 // Reset everything:
 resetButton.onclick = function() {reset()}
 
 function reset() {
-    hundredths = 0
-    second = 0
-    minute = 0
-    theTimer.innerHTML = addLeadingZero(minute) + ":" + addLeadingZero(second) + ":" + addLeadingZero(hundredths)
+    zeroTime.hundredths = 0
+    zeroTime.second = 0
+    zeroTime.minute = 0
+    var resetTimer = new Timer(zeroTime.minute, zeroTime.second, zeroTime.hundredths)
+    resetTimer.showTime()
+
     clearInterval(startTime)
     startTime = null
 
     testArea.value = ""
-    testWrapper.style.border = "10px solid grey"
+    greyBorder.showBorder()
 }
-
-// Event listeners for keyboard input and the reset button:
