@@ -53,7 +53,7 @@ SpeedTest.prototype = {
         }
         this.hundredths++
         
-        this.theTimer.innerHTML = this.addLeadingZero(this.minute) + ":" + this.addLeadingZero(this.second) + ":" + SpeedTest.prototype.addLeadingZero(this.hundredths)
+        this.theTimer.innerHTML = this.addLeadingZero(this.minute) + ":" + this.addLeadingZero(this.second) + ":" + this.addLeadingZero(this.hundredths)
     },
     reset() {
         this.minute = 0
